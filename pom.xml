@@ -10,6 +10,7 @@
 
     <dependencies>
 
+        <!-- Hibernate 4.x -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -32,6 +33,13 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-search-orm</artifactId>
             <version>5.1.1.Final</version>
+        </dependency>
+
+        <!-- MyBatis 3.x -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.3.0</version>
         </dependency>
 
         <dependency>
@@ -68,6 +76,12 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.10</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
         </dependency>
 
     </dependencies>
