@@ -1,19 +1,19 @@
 /**
- *
  * Title: Acer Internal Project
  * Copyright: (c) 2015, Acer Inc.
  * Name: Credit
  *
  * @author Oscar Wei
  * @since 2015/3/14
- *
+ * <p>
  * H i s t o r y
- *
+ * <p>
  * 2015/3/14 Oscar Wei v1
- * + File created 
+ * + File created
  */
 package tw.com.oscar.orm.hibernate.domain;
 
+import com.google.common.base.MoreObjects;
 import tw.com.oscar.orm.hibernate.domain.enums.CreditCardType;
 
 import javax.persistence.*;
@@ -81,5 +81,13 @@ public class Credit extends NamedEntity {
     @Override
     public int hashCode() {
         return description != null ? description.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("description", description)
+                .add("creditCardType", creditCardType)
+                .toString();
     }
 }

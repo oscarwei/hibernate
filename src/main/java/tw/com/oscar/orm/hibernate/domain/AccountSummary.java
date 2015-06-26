@@ -19,7 +19,6 @@ import org.hibernate.annotations.Synchronize;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 
@@ -42,7 +41,7 @@ public class AccountSummary {
     private BigDecimal salary;
 
     @Id
-    @GeneratedValue
+    // @GeneratedValue
     public int getPid() {
         return pid;
     }

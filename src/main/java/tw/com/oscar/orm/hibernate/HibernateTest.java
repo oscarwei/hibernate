@@ -34,6 +34,8 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
  * <strong>Description:</strong><br>
  * This function include: - TODO <br/>
@@ -84,6 +86,7 @@ public class HibernateTest {
             testCase3(session, credit);
             tx.commit();
 
+            // View-to-model example
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             tx = session.beginTransaction();
             accountSummary(session);
@@ -208,7 +211,9 @@ public class HibernateTest {
         session.delete(user);
     }
 
+    @SuppressWarnings("unchecked")
     private static void testNaturalId(Session session) {
+        checkNotNull(session, "Illegal argument passed: Session object cannot be null");
         List<Account> accounts = session.createCriteria(Account.class)
                 .add(Restrictions.naturalId().set("username", "oscarwei")).list();
         if (CollectionUtils.isNotEmpty(accounts)) {
@@ -218,6 +223,7 @@ public class HibernateTest {
         }
     }
 
+    @SuppressWarnings("unchecked")
     private static void testFullText(Session session) {
         FullTextSession textSession = Search.getFullTextSession(session);
         QueryBuilder queryBuilder = textSession.getSearchFactory().buildQueryBuilder()
@@ -249,7 +255,7 @@ public class HibernateTest {
         Query query = session.createQuery("FROM AccountSummary");
         List<AccountSummary> list = query.list();
         for (AccountSummary summary : list) {
-            System.out.println(summary.getFirstName() + " : " + summary.getSalary());
+            System.out.println("View: " + summary.getFirstName() + " : " + summary.getSalary());
         }
     }
 }
